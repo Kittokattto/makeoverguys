@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SignUpController extends CI_Controller {
+class SignUp extends CI_Controller {
 
 
 	public function __construct() {
@@ -24,7 +24,7 @@ class SignUpController extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             // Validation failed, load the form view again with errors
-            $this->load->view('Signup');
+            $this->load->view('signup');
         } else {
             // Validation succeeded, process the form data
             // For example, save data to the database
@@ -39,10 +39,10 @@ class SignUpController extends CI_Controller {
 
             if($query){
                 $this->session->set_flashdata('success','Registration successfull, Now you can login.');	
-                redirect('Signup');
+                redirect('signup');
                 } else {
                 $this->session->set_flashdata('error','Something went wrong. Please try again.');	
-                redirect('Signup');	
+                redirect('signup');	
                 }
         }
 	}

@@ -5,9 +5,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-	<title>User Registration</title>
+	<title>User Signin</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -126,49 +127,34 @@
 
 <body>
 	<div class="signup-form">
-		<h2>Register</h2>
-		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
+		<h2>Forgot Password</h2>
 
 
-		<?php echo form_open('SignUpController/register', ['name' => 'userregistration', 'autocomplete' => 'off']); ?>
+		<?php echo form_open('ForgotPasswordController/verifyEmail', ['name' => 'userregistration', 'autocomplete' => 'off']); ?>
+
 		<div class="form-group">
-			<!--success message -->
-			<?php if ($this->session->flashdata('success')) { ?>
-				<p style="color:green"><?php echo $this->session->flashdata('success'); ?></p>
-			<?php } ?>
-
 			<!--error message -->
 			<?php if ($this->session->flashdata('error')) { ?>
 				<p style="color:red"><?php echo $this->session->flashdata('error'); ?></p>
 			<?php } ?>
+            <!--success message -->
+			<?php if ($this->session->flashdata('success')) { ?>
+				<p style="color:green"><?php echo $this->session->flashdata('success'); ?></p>
+			<?php } ?>
 
-
-			<div class="form-group">
-				<?php echo form_input(['name' => 'username', 'class' => 'form-control', 'value' => set_value('username'), 'placeholder' => 'Enter Username']); ?>
-				<?php echo form_error('username', "<div style='color:red'>", "</div>"); ?>
-			</div>
+			<?php echo form_input(['name' => 'email', 'class' => 'form-control', 'value' => set_value('email'), 'placeholder' => 'Enter your Email']); ?>
+			<?php echo form_error('email', "<div style='color:red'>", "</div>"); ?>
 		</div>
+
+
 
 		<div class="form-group">
-			<?php echo form_input(['name' => 'emailid', 'class' => 'form-control', 'value' => set_value('emailid'), 'placeholder' => 'Enter your Email id']); ?>
-			<?php echo form_error('emailid', "<div style='color:red'>", "</div>"); ?>
+			<?php echo form_submit(['name' => 'insert', 'value' => 'Sent OTP', 'class' => 'btn btn-success btn-lg btn-block']); ?>
 		</div>
 
-		<div class="form-group">
-			<?php echo form_password(['name' => 'password', 'class' => 'form-control', 'value' => set_value('password'), 'placeholder' => 'Password']); ?>
-			<?php echo form_error('password', "<div style='color:red'>", "</div>"); ?>
-		</div>
-		<div class="form-group">
-			<?php echo form_password(['name' => 'confirmpassword', 'class' => 'form-control', 'value' => set_value('confirmpassword'), 'placeholder' => 'Password']); ?>
-			<?php echo form_error('confirmpassword', "<div style='color:red'>", "</div>"); ?>
-		</div>
-
-		<div class="form-group">
-			<?php echo form_submit(['name' => 'insert', 'value' => 'Submit', 'class' => 'btn btn-success btn-lg btn-block']); ?>
-		</div>
 		</form>
 		<?php echo form_close(); ?>
-		<div class="text-center">Already have an account? <a href="<?php echo site_url('Signin'); ?>">Sign in</a></div>
+		<div class="text-center">Not Registered Yet? <a href="<?php echo site_url('Signup'); ?>">Sign up here</a></div>
 	</div>
 </body>
 

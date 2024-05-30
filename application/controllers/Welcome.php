@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function index(){
-		$userfname=$this->session->userdata('fname');	
-		$this->load->view('welcome',['firstname'=>$userfname]);
+		$username=$this->session->userdata('username');	
+		$this->load->view('welcome',['username'=>$username]);
 	}
 }

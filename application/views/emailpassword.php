@@ -10,6 +10,6 @@
     <p>We have received a request to reset your password. Your new password is:</p>
     <p><strong><?php echo $new_password; ?></strong></p>
     <p>Please change this password after logging in.</p>
-    <p>Thank you,<br>Your Company Name</p>
+    <p>Thank you,<br>The Makeover Guys</p>
 </body>
 </html>

@@ -127,7 +127,7 @@
 
 <body>
 	<div class="signup-form">
-		<h2>Signin</h2>
+		<h2>Login</h2>
 		<p class="hint-text">Sign in to start your session</p>
 
 
@@ -146,7 +146,7 @@
 				<p style="color:green"><?php echo $this->session->flashdata('success'); ?></p>
 			<?php } ?>
 
-			<?php echo form_input(['name' => 'emailid', 'class' => 'form-control', 'value' => set_value('emailid'), 'placeholder' => 'Enter your Email id']); ?>
+			<?php echo form_input(['name' => 'emailid', 'class' => 'form-control', 'value' => set_value('emailid'), 'placeholder' => 'Enter your Email']); ?>
 			<?php echo form_error('emailid', "<div style='color:red'>", "</div>"); ?>
 		</div>
 		<div class="form-group">

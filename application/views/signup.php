@@ -150,7 +150,7 @@
 		</div>
 
 		<div class="form-group">
-			<?php echo form_input(['name' => 'emailid', 'class' => 'form-control', 'value' => set_value('emailid'), 'placeholder' => 'Enter your Email id']); ?>
+			<?php echo form_input(['name' => 'emailid', 'class' => 'form-control', 'value' => set_value('emailid'), 'placeholder' => 'Enter your Email']); ?>
 			<?php echo form_error('emailid', "<div style='color:red'>", "</div>"); ?>
 		</div>
 
@@ -159,7 +159,7 @@
 			<?php echo form_error('password', "<div style='color:red'>", "</div>"); ?>
 		</div>
 		<div class="form-group">
-			<?php echo form_password(['name' => 'confirmpassword', 'class' => 'form-control', 'value' => set_value('confirmpassword'), 'placeholder' => 'Password']); ?>
+			<?php echo form_password(['name' => 'confirmpassword', 'class' => 'form-control', 'value' => set_value('confirmpassword'), 'placeholder' => 'Re-enter Password']); ?>
 			<?php echo form_error('confirmpassword', "<div style='color:red'>", "</div>"); ?>
 		</div>
 

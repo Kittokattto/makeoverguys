@@ -28,7 +28,7 @@ class SignInController extends CI_Controller {
             $validate = $this->User_model->loginUser($email, $password);
             if ($validate) {
                 $this->session->set_userdata('uid', $validate->id);
-                $this->session->set_userdata('fname', $validate->FirstName);
+                $this->session->set_userdata('username', $validate->username);
                 redirect('welcome');
             } else {
                 $this->session->set_flashdata('error', 'Invalid login details.Please try again.');

@@ -11,11 +11,23 @@ class User_model extends CI_Model {
         $this->load->database();
     }
 
+    // Insert User detail
     public function insert_user($data) {
-        return $this->db->insert($this->table, $data);
+        try {
+            $this->db->insert($this->table, $data);
+            return true;
+        } catch (Exception $e) {
+            // Check if user exist
+            if ($this->db->error()['code'] == 1062) {
+                // Already exist entry error
+                return -2;
+            } else {
+                // Other database error
+                return -1;
+            }
+        }
     }
-
-    // Example of another method using the table name
+    
     public function get_user($id) {
         return $this->db->get_where($this->table, array('id' => $id))->row();
     }
@@ -44,5 +56,17 @@ class User_model extends CI_Model {
         if ($login != NULL) {
             return $login->row();
         }
+    }
+
+    public function is_username_exists($username) {
+        $this->db->where('username', $username);
+        $query = $this->db->get($this->table);
+        return $query->num_rows() > 0;
+    }
+
+    public function is_email_exists($email) {
+        $this->db->where('email', $email);
+        $query = $this->db->get($this->table);
+        return $query->num_rows() > 0;
     }
 }

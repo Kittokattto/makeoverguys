@@ -44,10 +44,13 @@ public function login()
 				//Tracking Login User activity
 				$this->UserActivity_model->insert_activity($validate->id, 'Login', $validate->username . " has logged in to the website");
 				
+                $this->session->set_flashdata('error', null);
 				$this->session->set_flashdata('success', 'Login successful');
                 echo json_encode(array('status' => 'success', 'message' => 'Login successful'));
             } else {
+                $this->session->set_flashdata('success', null);
 				$this->session->set_flashdata('error', 'Invalid login details. Please try again.');
+                
                 echo json_encode(array('status' => 'error', 'message' => 'Invalid login details. Please try again.'));
             }
         }

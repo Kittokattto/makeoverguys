@@ -132,7 +132,7 @@
         <form id="registrationForm" method="post" action="<?php echo site_url('SignUpController/register'); ?>">
             <div class="form-group">
 
-				<!--error message -->
+            				<!--error message -->
 				<?php if ($this->session->flashdata('error')) { ?>
 					<p style="color:red"><?php echo $this->session->flashdata('error'); ?></p>
 				<?php } ?>
@@ -141,6 +141,12 @@
 				<?php if ($this->session->flashdata('success')) { ?>
 					<p style="color:green"><?php echo $this->session->flashdata('success'); ?></p>
 				<?php } ?>
+                
+                <!--success message -->
+                <div id="successMessage" style="display: none; color:green"></div>
+
+                <!--error message -->
+                <div id="errorMessage" style="display: none; color:red"></div>
 
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" value="" placeholder="Enter Username">

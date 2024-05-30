@@ -58,6 +58,7 @@ class SignUpController extends CI_Controller {
                     'message' => $message
                 );
     
+                $this->session->set_flashdata('error', $message);
                 echo json_encode($response);
             } else {
                 // Proceed with inserting the user
@@ -72,11 +73,13 @@ class SignUpController extends CI_Controller {
     
                 if ($query) {
                     $this->session->set_flashdata('success', 'Registration successful. Now you can login.');
+                    $this->session->set_flashdata('error', null);
                     $response = array(
                         'status' => 'success',
                         'message' => 'Registration successful. Now you can login.'
                     );
                 } else {
+                    $this->session->set_flashdata('success', null);
                     $this->session->set_flashdata('error', 'Something went wrong. Please try again.');
                     $response = array(
                         'status' => 'error',

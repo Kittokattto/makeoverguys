@@ -50,7 +50,7 @@ class ForgotPasswordController extends CI_Controller {
                     // Call the send_email function from the library
                     $response = $this->send_email($email, $username, $new_password);
                     if ($response == 0) {
-                        $this->session->set_flashdata('success', 'Please check your email for instructions to reset your password.');
+                        $this->session->set_flashdata('success', 'Please check your email for your new password  or ('.$new_password.') Please copy this new password to log in');
                         redirect('Signin');
                     } else {
                         $this->session->set_flashdata('error', 'Failed to send email. Please try again.');

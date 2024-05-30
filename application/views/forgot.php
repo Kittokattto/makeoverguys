@@ -149,7 +149,7 @@
 
 
 		<div class="form-group">
-			<?php echo form_submit(['name' => 'insert', 'value' => 'Sent OTP', 'class' => 'btn btn-success btn-lg btn-block']); ?>
+			<?php echo form_submit(['name' => 'insert', 'value' => 'Send Email', 'class' => 'btn btn-success btn-lg btn-block']); ?>
 		</div>
 
 		</form>

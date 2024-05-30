@@ -39,7 +39,7 @@ class User_model extends CI_Model {
     public function update_password_by_id($id, $new_password) {
         // Update the password in the database based on the ID
         $data = array(
-            'password' => $new_password
+            'password' => password_hash($new_password, PASSWORD_BCRYPT)
         );
         $this->db->where('id', $id);
         return $this->db->update($this->table, $data);
@@ -47,16 +47,17 @@ class User_model extends CI_Model {
 
     public function loginUser($email, $password)
     {
-        $data = array(
-            'email' => $email,
-            'password' => $password
-        );
-        $query = $this->db->where($data);
-        $login = $this->db->get($this->table);
-        if ($login != NULL) {
-            return $login->row();
+        $user = $this->db->where('email', $email)->get($this->table)->row();
+        if ($user) {
+            // Verify the password
+            if (password_verify($password, $user->password)) {
+                return $user; // Return the user object directly
+            }
         }
+        // Return null if user doesn't exist or password is incorrect
+        return null;
     }
+    
 
     public function is_username_exists($username) {
         $this->db->where('username', $username);

@@ -6,6 +6,7 @@ class ForgotPasswordController extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('UserActivity_model');
         $this->load->library('form_validation');
         $this->load->library('email');
         $this->load->config('email'); 
@@ -42,7 +43,8 @@ class ForgotPasswordController extends CI_Controller {
 
                 //Save new password for the user
                 $success = $this->User_model->update_password_by_id($id, $new_password);
-
+                //Tracking reset password activity
+                $this->UserActivity_model->insert_activity($id, 'Reset Password', $username +" has request to reset password");
                 if($success)
                 {
                     // Call the send_email function from the library

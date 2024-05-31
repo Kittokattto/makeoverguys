@@ -7,6 +7,7 @@ class SignUpController extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('UserActivity_model');
         $this->load->library('form_validation');
     }
 	public function index()
@@ -70,8 +71,13 @@ class SignUpController extends CI_Controller {
     
                 // Save data
                 $query = $this->User_model->insert_user($data);
+
     
                 if ($query) {
+
+                    //Tracking Register User activity
+                    $this->UserActivity_model->insert_activity($query->id, 'Register', $query->username . " has register to the website");
+                    
                     $this->session->set_flashdata('success', 'Registration successful. Now you can login.');
                     $this->session->set_flashdata('error', null);
                     $response = array(

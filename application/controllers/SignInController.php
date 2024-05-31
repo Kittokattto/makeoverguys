@@ -30,6 +30,7 @@ public function login()
                 'emailid' => form_error('emailid'),
                 'password' => form_error('password')
             );
+            $this->session->set_flashdata ('error', $errors);
             echo json_encode(array('status' => 'error', 'errors' => $errors));
         } else {
             // Validation succeeded, process the form data

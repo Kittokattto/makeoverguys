@@ -143,10 +143,12 @@
 			<?php } ?>
 			
                 <input type="text" name="emailid" id="emailid" class="form-control" placeholder="Enter your Email">
+                <?php echo form_error('emailid', "<div style='color:red'>", "</div>"); ?>
                 <div id="emailid_error" style="color:red;"></div>
             </div>
             <div class="form-group">
                 <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                <?php echo form_error('password', "<div style='color:red'>", "</div>"); ?>
                 <div id="password_error" style="color:red;"></div>
             </div>
             <div class="form-group">
@@ -180,10 +182,13 @@
                     success: function (response) {
                         if (response.status == 'error') {
                             if (response.errors) {
+                                console.log("heo");
                                 $('#emailid_error').html(response.errors.emailid);
                                 $('#password_error').html(response.errors.password);
+                                location.reload();
                             } else {
                                 $('#error_message').html(response.message);
+                                location.reload();
                             }
                         } else {
 							window.location.href = '<?php echo site_url("welcome"); ?>';

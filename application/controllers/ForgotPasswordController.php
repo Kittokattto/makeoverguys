@@ -29,8 +29,8 @@ class ForgotPasswordController extends CI_Controller {
             // Validation succeeded, process the form data
             // For example, save data to the database
             
-                $email =$this->input->post('email');
-            // save data
+            $email =$this->input->post('email');
+            // get data
             $query = $this->User_model->get_user_email($email);
 
             if($query)
